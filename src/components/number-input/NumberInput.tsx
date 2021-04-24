@@ -1,37 +1,26 @@
 import React, { ReactNode } from 'react';
 import './NumberInput.css';
-
+// TODO Добавить проп maxValue
 interface NumberInputProps {
     value?: number;
+    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
 }
 
-interface NumberInputState {
-    value: number;
-}
-
-export class NumberInput extends React.Component<NumberInputProps, NumberInputState> {
+export class NumberInput extends React.Component<NumberInputProps> {
 
     constructor(props: NumberInputProps) {
         super(props);
-        this.state = {
-            value: props.value || 1,
-        }
     }
 
     public handleInput(event: React.ChangeEvent<HTMLInputElement>): void {
-
-        const value = +event.target.value;
-
-        this.setState({
-            value: value || 1,
-        });
+        this.props.onChange(event);
     }
 
     public render(): ReactNode {
         return (
             <input className='number-input'
                    type={'number'}
-                   value={this.state.value}
+                   value={this.props.value}
                    onChange={event => this.handleInput(event)}/>
         );
     };

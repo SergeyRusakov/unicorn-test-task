@@ -7,10 +7,27 @@ export interface CartItemProps {
     item: SelectedItem;
 }
 
-export class CartItem extends React.Component<CartItemProps> {
+// TODO вынести стейт в redux
+export interface CartItemState {
+    item: SelectedItem;
+}
+
+export class CartItem extends React.Component<CartItemProps, CartItemState> {
 
     constructor(props: CartItemProps) {
         super(props);
+        this.state = {
+            item: this.props.item,
+        };
+    }
+
+    public handleInputChange(event: React.ChangeEvent<HTMLInputElement>): void {
+        this.setState((state) => ({
+            item: {
+                ...state.item,
+                quantity: +event.target.value || 1,
+            },
+        }))
     }
 
     public render(): ReactNode {
@@ -20,7 +37,8 @@ export class CartItem extends React.Component<CartItemProps> {
                     {this.props.item.title}
                 </div>
                 <div className='cart-item__quantity-form'>
-                    <NumberInput/>
+                    <NumberInput value={this.state.item.quantity}
+                                 onChange={(event) => this.handleInputChange(event)}/>
                 </div>
                 <div className='cart-item__remove-button'>
                     <img src='/clear.svg' alt="Clear"/>
