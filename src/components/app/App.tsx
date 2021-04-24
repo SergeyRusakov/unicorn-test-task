@@ -1,7 +1,7 @@
 import React from 'react';
-import { Header } from '../header.component/Header';
+import { Header } from '../header/Header';
 import './App.css';
-import { CategoriesView } from '../categories-view.component/CategoriesView';
+import { CategoriesView } from '../categories-view/CategoriesView';
 
 function App() {
   return (

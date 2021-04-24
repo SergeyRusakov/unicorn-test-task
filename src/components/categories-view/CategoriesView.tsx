@@ -1,5 +1,5 @@
 import './CategoriesView.css';
-import { CategoryCard } from '../category-card.component/CategoryCard';
+import { CategoryCard } from '../category-card/CategoryCard';
 import { Category } from '../../types/category.type';
 
 export const CategoriesView = () => {

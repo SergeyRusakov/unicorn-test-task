@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import './HeaderCart.css';
-import { CartStats } from '../cart-stats.component/CartStats';
-import { CartDialog } from '../cart-dialog.component/CartDialog';
+import { CartStats } from '../cart-stats/CartStats';
+import { CartDialog } from '../cart-dialog/CartDialog';
 import { SelectedItem } from '../../types/selected-item.type';
 
 // TODO Переделать на функциональный компонент с хуками

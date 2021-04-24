@@ -1,8 +1,8 @@
 import React from 'react';
 import { SelectedItem } from '../../types/selected-item.type';
-import { CartItem } from '../cart-item.component/CartItem';
-import { CartStats } from '../cart-stats.component/CartStats';
-import { SubmitButton } from '../submit-button.component/SubmitButton';
+import { CartItem } from '../cart-item/CartItem';
+import { CartStats } from '../cart-stats/CartStats';
+import { SubmitButton } from '../submit-button/SubmitButton';
 import './CartDialog.css';
 
 interface CartDialogProps {

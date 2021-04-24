@@ -1,4 +1,4 @@
-import { HeaderCart } from '../header-cart.component/HeaderCart';
+import { HeaderCart } from '../header-cart/HeaderCart';
 import './Header.css';
 
 export const Header = () => {
