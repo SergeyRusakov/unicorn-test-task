@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import { SelectedItem } from '../../types/selected-item.type';
 import './CartItem.css';
+import { NumberInput } from '../number-input/NumberInput';
 
 export interface CartItemProps {
     item: SelectedItem;
@@ -19,7 +20,7 @@ export class CartItem extends React.Component<CartItemProps> {
                     {this.props.item.title}
                 </div>
                 <div className='cart-item__quantity-form'>
-                    1231231
+                    <NumberInput/>
                 </div>
                 <div className='cart-item__remove-button'>
                     <img src='/clear.svg' alt="Clear"/>

@@ -16,3 +16,7 @@
     align-items: center;
     cursor: pointer;
 }
+
+.cart-item__quantity-form {
+    width: 80px;
+}
