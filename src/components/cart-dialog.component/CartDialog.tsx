@@ -13,7 +13,7 @@ export const CartDialog = (props: CartDialogProps) => {
 
     const cartItems = props.items.map(item => {
         return (
-            <li className='cart-dialog__item'>
+            <li className='cart-dialog__item' key={item.id}>
                 <CartItem item={item}/>
             </li>
         )

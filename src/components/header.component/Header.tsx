@@ -5,7 +5,7 @@ export const Header = () => {
     return (
         <div className='header'>
             <h1 className='header__title'>
-                ВИД 1
+                UNICORN SHOP
             </h1>
             <HeaderCart/>
         </div>

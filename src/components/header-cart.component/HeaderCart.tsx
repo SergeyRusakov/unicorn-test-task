@@ -38,14 +38,14 @@ export class HeaderCart extends React.Component<any, HeaderCartState> {
             {
                 title: 'Товар 1',
                 categoryId: 1,
-                id: 1,
+                id: 2,
                 price: 123,
                 quantity: 5,
             },
             {
                 title: 'Товар 1',
                 categoryId: 1,
-                id: 1,
+                id: 3,
                 price: 123,
                 quantity: 5,
             },
