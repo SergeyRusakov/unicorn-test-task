@@ -1,7 +1,16 @@
 .header-cart {
-    width: 200px;
-    height: 100px;
     border: 1px solid black;
     width: 190px;
     height: 60px;
+    position: relative;
+}
+
+.header-cart__title {
+    cursor: pointer;
+}
+
+.header-cart__cart-dialog {
+    position: absolute;
+    top: 0;
+    right: 0;
 }

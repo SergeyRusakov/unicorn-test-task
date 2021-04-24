@@ -1,0 +1,27 @@
+.cart-dialog {
+    background: #ffffff;
+    height: 400px;
+    width: 300px;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+}
+
+.cart-dialog__content {
+    min-height: 0;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.cart-dialog__item {
+    border-bottom: 1px solid black;
+    height: 40px;
+    user-select: none;
+}
+
+.cart-dialog__footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}

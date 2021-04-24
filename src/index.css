@@ -132,3 +132,12 @@ html {
   * {
     font-family: 'Roboto', sans-serif;;
   }
+
+  li {
+    list-style: none;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
