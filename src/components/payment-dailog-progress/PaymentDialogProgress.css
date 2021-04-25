@@ -1,0 +1,14 @@
+.payment-dialog-progress {
+    width: 100%;
+    height: 100%;
+}
+
+.payment-dialog-progress__head {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.payment-dialog-progress__progress-bar {
+    width: 100%;
+}

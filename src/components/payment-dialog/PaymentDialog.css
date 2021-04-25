@@ -1,0 +1,12 @@
+.payment-dialog {
+    width: 600px;
+    height: 400px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.payment-dialog__content {
+    width: 60%;
+}

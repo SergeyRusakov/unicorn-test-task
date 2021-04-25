@@ -5,6 +5,7 @@ import { CartStats } from '../cart-stats/CartStats';
 import { SubmitButton } from '../submit-button/SubmitButton';
 import './CartDialog.css';
 import { AppDialog } from '../app-dialog/AppDialog';
+import { PaymentDialog } from '../payment-dialog/PaymentDialog';
 
 interface CartDialogProps {
     items: SelectedItem[];
@@ -45,6 +46,7 @@ export const CartDialog = (props: CartDialogProps) => {
             </div>
             <AppDialog isOpen={isDialogOpen}
                        afterClose={handleDialogClose}>
+                <PaymentDialog/>
             </AppDialog>
         </div>
     );
