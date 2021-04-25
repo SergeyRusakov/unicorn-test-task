@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { SelectedItem } from '../../types/selected-item.type';
 import { CartItem } from '../cart-item/CartItem';
 import { CartStats } from '../cart-stats/CartStats';
 import { SubmitButton } from '../submit-button/SubmitButton';
 import './CartDialog.css';
+import { AppDialog } from '../app-dialog/AppDialog';
 
 interface CartDialogProps {
     items: SelectedItem[];
 }
 // TODO Добавить оверлей
 export const CartDialog = (props: CartDialogProps) => {
+
+    const [isDialogOpen, setDialogOpen] = useState(false);
 
     const cartItems = props.items.map(item => {
         return (
@@ -18,6 +21,14 @@ export const CartDialog = (props: CartDialogProps) => {
             </li>
         )
     });
+
+    const handleDialogClose = () => {
+        setDialogOpen(false);
+    }
+
+    const handleSubmitButton = () => {
+        setDialogOpen(true);
+    }
 
     return (
         <div className='cart-dialog'>
@@ -28,8 +39,13 @@ export const CartDialog = (props: CartDialogProps) => {
             </div>
             <div className="cart-dialog__footer">
                 <CartStats/>
-                <SubmitButton title={'Оплатить'}/>
+                <SubmitButton onClick={handleSubmitButton}>
+                    Оплатить
+                </SubmitButton>
             </div>
+            <AppDialog isOpen={isDialogOpen}
+                       afterClose={handleDialogClose}>
+            </AppDialog>
         </div>
     );
 

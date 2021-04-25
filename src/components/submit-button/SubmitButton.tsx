@@ -1,17 +1,22 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
-//TODO роверить возможность прокидвания колбэка на клик через пропсы
 export interface SubmitButtonProps {
-    title: string;
+    onClick?: (event: React.BaseSyntheticEvent) => void;
+    children: ReactNode;
 }
 
 export const SubmitButton = (props: SubmitButtonProps) => {
 
-    const {title} = props;
+    const handleClick = (event: React.BaseSyntheticEvent) => {
+        if (props.onClick) {
+            props.onClick(event);
+        }
+    }
 
     return (
-        <button className='submit-button'>
-            {title}
+        <button className='submit-button'
+                onClick={event => handleClick(event)}>
+            {props.children}
         </button>
     )
 }
