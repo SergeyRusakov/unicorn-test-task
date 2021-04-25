@@ -1,6 +1,7 @@
 import React, { ReactNode, RefObject } from 'react';
 import './PaymentDialog.css';
 import { PaymentDialogProgress } from '../payment-dailog-progress/PaymentDialogProgress';
+import { PaymentSuccessItemsList } from '../payment-success-items-list/PaymentSuccessItemsList';
 
 interface PaymentDialogState {
     isLoading: boolean;
@@ -51,7 +52,7 @@ export class PaymentDialog extends React.Component<any, PaymentDialogState> {
 
         const content = this.state.isLoading ?
             <PaymentDialogProgress ref={this.progressComponentRef}/> :
-            null;
+            <PaymentSuccessItemsList/>
 
         return (
             <div className='payment-dialog'>

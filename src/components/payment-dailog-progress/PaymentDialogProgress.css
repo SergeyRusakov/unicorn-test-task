@@ -6,7 +6,7 @@
 .payment-dialog-progress__head {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 .payment-dialog-progress__progress-bar {
