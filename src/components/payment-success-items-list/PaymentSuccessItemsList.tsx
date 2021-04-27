@@ -11,6 +11,7 @@ export const PaymentSuccessItemsList = () => {
             id: 1,
             price: 123,
             quantity: 5,
+            available: 5,
         },
         {
             title: 'Товар 1',
@@ -18,6 +19,7 @@ export const PaymentSuccessItemsList = () => {
             id: 2,
             price: 123,
             quantity: 5,
+            available: 5,
         },
         {
             title: 'Товар 1',
@@ -25,6 +27,7 @@ export const PaymentSuccessItemsList = () => {
             id: 3,
             price: 123,
             quantity: 5,
+            available: 5,
         },
     ];
 

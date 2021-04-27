@@ -1,18 +1,14 @@
-import { CartStatsValue } from '../../types/cart-stats-value.type';
+import { useSelector } from 'react-redux';
+import { selectCartStats } from '../../store/selected-items.slice';
 
 export const CartStats = () => {
-    // TODO убрать мок
-    const cartStats: CartStatsValue = {
-        quantity: 120,
-        sum: 12312312,
-    }
 
-    const {sum, quantity} = cartStats;
+    const {sum, quantity} = useSelector(selectCartStats);
 
     return (
         <div className='cart-stats'>
-            <span className='cart-stats__sum'>{sum}</span>
-            <span className='cart-stats__quantity'>{quantity}</span>
+            <span className='cart-stats__quantity'>{quantity} товаров </span>
+            <span className='cart-stats__sum'>на сумму {sum} руб. </span>
         </div>
     )
 }

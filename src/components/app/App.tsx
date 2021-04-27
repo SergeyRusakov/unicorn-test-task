@@ -1,7 +1,7 @@
 import React from 'react';
 import { Header } from '../header/Header';
 import './App.css';
-import { CategoriesView } from '../categories-view/CategoriesView';
+import { ItemsView } from '../items-view/ItemsView';
 
 function App() {
   return (
@@ -13,7 +13,8 @@ function App() {
 
 
         <div className="app__categories">
-            <CategoriesView/>
+            <ItemsView/>
+            {/*<CategoriesView/>*/}
         </div>
 
     </div>

@@ -2,7 +2,6 @@ import React, { ReactNode } from 'react';
 import './HeaderCart.css';
 import { CartStats } from '../cart-stats/CartStats';
 import { CartDialog } from '../cart-dialog/CartDialog';
-import { SelectedItem } from '../../types/selected-item.type';
 
 // TODO Переделать на функциональный компонент с хуками
 
@@ -26,31 +25,6 @@ export class HeaderCart extends React.Component<any, HeaderCartState> {
     }
 
     public render(): ReactNode {
-        // TODO убрать замоканные айтемы
-        const items: SelectedItem[] = [
-            {
-                title: 'Товар 1',
-                categoryId: 1,
-                id: 1,
-                price: 123,
-                quantity: 5,
-            },
-            {
-                title: 'Товар 1',
-                categoryId: 1,
-                id: 2,
-                price: 123,
-                quantity: 5,
-            },
-            {
-                title: 'Товар 1',
-                categoryId: 1,
-                id: 3,
-                price: 123,
-                quantity: 5,
-            },
-        ];
-
         return (
             <div className='header-cart'>
 
@@ -64,7 +38,7 @@ export class HeaderCart extends React.Component<any, HeaderCartState> {
                 </div>
 
                 <div className='header-cart__cart-dialog'>
-                    {this.state.isCartDialogOpen && <CartDialog items={items}/>}
+                    {this.state.isCartDialogOpen && <CartDialog/>}
                 </div>
 
             </div>

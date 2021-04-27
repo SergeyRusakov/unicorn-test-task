@@ -1,7 +1,5 @@
-export interface SelectedItem {
-    id: number;
-    categoryId: number;
-    title: string;
+import { ShoppingItem } from './shopping-item.type';
+
+export interface SelectedItem extends ShoppingItem {
     quantity: number;
-    price: number;
 }

@@ -35,13 +35,21 @@ export class PaymentDialog extends React.Component<any, PaymentDialogState> {
         this.loadingInterval = setInterval(() => {
             this.setState((state) => {
                 const percentage = state.loadingPercentage + 1;
+                const isLoading = percentage <= 100;
                 this.progressComponentRef.current?.setPercentage(percentage);
+                if (!isLoading) {
+                    this.afterLoading();
+                }
                 return {
                     loadingPercentage: percentage,
-                    isLoading: percentage < 100,
+                    isLoading,
                 };
             });
         }, 20);
+    }
+
+    private afterLoading(): void {
+        this.clearLoadingInterval();
     }
 
     private clearLoadingInterval(): void {

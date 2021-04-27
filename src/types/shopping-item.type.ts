@@ -3,5 +3,5 @@ export interface ShoppingItem {
     categoryId: number;
     title: string;
     available: number;
-    price: string;
+    price: number;
 }

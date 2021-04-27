@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 import { SelectedItem } from '../../types/selected-item.type';
 import './CartItem.css';
 import { NumberInput } from '../number-input/NumberInput';
-
+// TODO Переделать на функциональный компонент
 export interface CartItemProps {
     item: SelectedItem;
 }
