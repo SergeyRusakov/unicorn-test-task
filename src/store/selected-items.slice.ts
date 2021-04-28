@@ -4,7 +4,10 @@ import { RootState } from './store';
 import { CartStatsValue } from '../types/cart-stats-value.type';
 
 const initialState: SelectedItem[] = [];
-
+// TODO Переименовать все редьюсеры по типу postAdded/postUpdated.
+// TODO Добавить редьюсер на изменение полей выбранного товара
+// TODO Приделать prepare callback: https://redux.js.org/tutorials/essentials/part-4-using-data (можно записывать дату добавления)
+// TODO Добавить селектед айтемам уникальные айдишники
 const selectedItemsSlice = createSlice({
     initialState,
     name: 'selectedItems',
@@ -18,6 +21,7 @@ const selectedItemsSlice = createSlice({
             }
         },
         removeItem: (state, action: PayloadAction<SelectedItem>) => {
+            console.log('1111');
             const index = state.findIndex(item => item.id === action.payload.id);
             if (index !== undefined) {
                 state.splice(index, 1);

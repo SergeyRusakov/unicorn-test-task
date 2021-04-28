@@ -1,6 +1,7 @@
 import React from 'react';
 import { Header } from '../header/Header';
 import './App.css';
+import { ItemDetailsView } from '../item-details-view/ItemDetailsView';
 import { ItemsView } from '../items-view/ItemsView';
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
 
 
         <div className="app__categories">
+            {/*<ItemDetailsView/>*/}
             <ItemsView/>
             {/*<CategoriesView/>*/}
         </div>
