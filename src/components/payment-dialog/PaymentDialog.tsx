@@ -2,24 +2,32 @@ import React, { ReactNode, RefObject } from 'react';
 import './PaymentDialog.css';
 import { PaymentDialogProgress } from '../payment-dailog-progress/PaymentDialogProgress';
 import { PaymentSuccessItemsList } from '../payment-success-items-list/PaymentSuccessItemsList';
+import { SelectedItem } from '../../types/selected-item.type';
+
+interface PaymentDialogProps {
+    selectedItems: SelectedItem[];
+}
 
 interface PaymentDialogState {
     isLoading: boolean;
     loadingPercentage: number;
 }
 
-export class PaymentDialog extends React.Component<any, PaymentDialogState> {
+// TODO Добавить удаление товаров из корзины после загрузки
+export class PaymentDialog extends React.Component<PaymentDialogProps, PaymentDialogState> {
 
-    private loadingInterval: any;
-    // Used RefObject only for experience purposes (Использовал рефы исключительно в ознакомительных целях)
+    // Used RefObject only for experience purposes(Использовал рефы исключительно в ознакомительных целях
     private readonly progressComponentRef: RefObject<PaymentDialogProgress>;
+    private readonly selectedItems: SelectedItem[];
+    private loadingInterval: any;
 
-    constructor(props: any) {
+    constructor(props: PaymentDialogProps) {
         super(props);
         this.state = {
             isLoading: true,
             loadingPercentage: 0,
         }
+        this.selectedItems = props.selectedItems;
         this.progressComponentRef = React.createRef<PaymentDialogProgress>();
     }
 
@@ -60,7 +68,7 @@ export class PaymentDialog extends React.Component<any, PaymentDialogState> {
 
         const content = this.state.isLoading ?
             <PaymentDialogProgress ref={this.progressComponentRef}/> :
-            <PaymentSuccessItemsList/>
+            <PaymentSuccessItemsList items={this.selectedItems}/>
 
         return (
             <div className='payment-dialog'>
