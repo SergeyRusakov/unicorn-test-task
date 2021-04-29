@@ -2,32 +2,43 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { SelectedItem } from '../types/selected-item.type';
 import { RootState } from './store';
 import { CartStatsValue } from '../types/cart-stats-value.type';
+import { ShoppingItem } from '../types/shopping-item.type';
 
 const initialState: SelectedItem[] = [];
-// TODO Переименовать все редьюсеры по типу postAdded/postUpdated.
-// TODO Добавить редьюсер на изменение полей выбранного товара
-// TODO Приделать prepare callback: https://redux.js.org/tutorials/essentials/part-4-using-data (можно записывать дату добавления)
-// TODO Добавить селектед айтемам уникальные айдишники
+
 const selectedItemsSlice = createSlice({
     initialState,
     name: 'selectedItems',
     reducers: {
-        setItem: (state, action: PayloadAction<SelectedItem>) => {
-            const selectedItem = state.find(item => item.id === action.payload.id);
-            if (selectedItem) {
-                selectedItem.quantity += action.payload.quantity;
-            } else {
+        itemAdded: {
+            prepare: (item: ShoppingItem, quantity: number) => {
+                return {
+                    payload: {
+                        ...item,
+                        quantity,
+                        added: new Date().toISOString(),
+                    }
+                }
+            },
+            reducer: (state, action: PayloadAction<SelectedItem>) => {
                 state.push(action.payload);
             }
         },
-        removeItem: (state, action: PayloadAction<SelectedItem>) => {
-            console.log('1111');
+        itemRemoved: (state, action: PayloadAction<SelectedItem>) => {
             const index = state.findIndex(item => item.id === action.payload.id);
             if (index !== undefined) {
                 state.splice(index, 1);
             }
         },
-        erase: (state) => {
+        itemQuantityChanged: (state, action: PayloadAction<{ id: number, quantity: number }>) => {
+            const { id, quantity } = action.payload;
+            const index = state.findIndex(item => item.id === id);
+            const item = state[index];
+            if (item && quantity <= item.available && quantity > 0) {
+                item.quantity = quantity;
+            }
+        },
+        allItemsRemoved: (state) => {
             state = [];
         },
     },
@@ -44,6 +55,14 @@ export function selectCartStats(state: RootState): CartStatsValue {
     return stats;
 }
 
-export const { setItem, removeItem, erase } = selectedItemsSlice.actions;
+export function selectById(state: RootState, id: number): SelectedItem | undefined {
+    return state.selectedItems.find(item => item.id === id);
+}
+
+export function selectAll(state: RootState): SelectedItem[] {
+    return state.selectedItems;
+}
+
+export const { itemAdded, itemRemoved, allItemsRemoved } = selectedItemsSlice.actions;
 
 export default selectedItemsSlice.reducer;

@@ -6,14 +6,14 @@ import './CartDialog.css';
 import { AppDialog } from '../app-dialog/AppDialog';
 import { PaymentDialog } from '../payment-dialog/PaymentDialog';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../store/store';
+import { selectAll } from '../../store/selected-items.slice';
 
 // TODO Добавить оверлей
 export const CartDialog = () => {
 
     const [isDialogOpen, setDialogOpen] = useState(false);
 
-    const selectedItems = useSelector((state: RootState) => state.selectedItems);
+    const selectedItems = useSelector(selectAll);
 
     const cartItems = selectedItems.map(item => {
         return (
@@ -31,23 +31,32 @@ export const CartDialog = () => {
         setDialogOpen(true);
     }
 
+    const isSubmitButtonDisabled = () => {
+        return !(selectedItems?.length);
+    }
+
     return (
         <div className='cart-dialog'>
+
             <div className="cart-dialog__content">
                 <ul className="cart-dialog__items">
                     {cartItems}
                 </ul>
             </div>
+
             <div className="cart-dialog__footer">
                 <CartStats/>
-                <SubmitButton onClick={handleSubmitButton}>
+                <SubmitButton disabled={isSubmitButtonDisabled()}
+                              onClick={handleSubmitButton}>
                     Оплатить
                 </SubmitButton>
             </div>
+
             <AppDialog isOpen={isDialogOpen}
                        afterClose={handleDialogClose}>
-                <PaymentDialog/>
+                <PaymentDialog selectedItems={selectedItems}/>
             </AppDialog>
+
         </div>
     );
 

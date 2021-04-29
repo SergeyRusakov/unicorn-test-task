@@ -1,7 +1,6 @@
 import React, { ReactNode } from 'react';
 import './NumberInput.css';
 
-// TODO Добавить проп maxValue
 interface NumberInputProps {
     value?: number;
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void,

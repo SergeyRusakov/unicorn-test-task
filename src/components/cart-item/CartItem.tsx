@@ -1,9 +1,9 @@
-import React, { ReactNode, useState } from 'react';
+import React, { useState } from 'react';
 import { SelectedItem } from '../../types/selected-item.type';
 import './CartItem.css';
 import { NumberInput } from '../number-input/NumberInput';
 import { useDispatch } from 'react-redux';
-import { removeItem, setItem } from '../../store/selected-items.slice';
+import { itemRemoved } from '../../store/selected-items.slice';
 
 // TODO Переделать на функциональный компонент
 export interface CartItemProps {
@@ -44,19 +44,19 @@ export const CartItem = (props: CartItemProps) => {
     //     }
     // }
 
-
+    // TODO Починить инпут
     const handleNumberInput = (event: React.ChangeEvent<HTMLInputElement>) => {
         const changedValue = +event.target.value;
-        if (!Number.isNaN(changedValue) && changedValue > 1 && changedValue <= item.available) {
-            dispatch(setItem({
-                ...props.item,
-                quantity: count
-            }));
-        }
+        // if (!Number.isNaN(changedValue) && changedValue > 1 && changedValue <= item.available) {
+        //     dispatch(itemAdded({
+        //         ...props.item,
+        //         quantity: count
+        //     }));
+        // }
     }
 
     const handleRemoveButton = () => {
-        dispatch(removeItem(item));
+        dispatch(itemRemoved(item));
     }
 
     return (
