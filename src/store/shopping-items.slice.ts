@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { itemsJSON } from './inital-state.data';
+import { itemsJSON } from '../data/inital-state.data';
 import { ShoppingItem } from '../types/shopping-item.type';
 import { RootState } from './store';
 import { Selector } from 'react-redux';
