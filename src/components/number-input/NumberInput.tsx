@@ -1,24 +1,21 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import './NumberInput.css';
 
 interface NumberInputProps {
     value?: number;
-    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void,
+    onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void,
 }
 
-export class NumberInput extends React.Component<NumberInputProps> {
+export const NumberInput = (props: NumberInputProps) => {
 
-    public handleInput(event: React.ChangeEvent<HTMLInputElement>): void {
-        this.props.onChange(event);
-    }
+    const {value, onChange, onBlur} = props;
 
-    public render(): ReactNode {
-        return (
-            <input className='number-input'
-                   type={'number'}
-                   value={this.props.value}
-                   onChange={event => this.handleInput(event)}/>
-        );
-    };
-
+    return (
+        <input className='number-input'
+               type={'number'}
+               value={value}
+               onChange={event => onChange ? onChange(event) : undefined}
+               onBlur={event => onBlur ? onBlur(event) : undefined}/>
+    );
 }

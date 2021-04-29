@@ -63,6 +63,6 @@ export function selectAll(state: RootState): SelectedItem[] {
     return state.selectedItems;
 }
 
-export const { itemAdded, itemRemoved, allItemsRemoved } = selectedItemsSlice.actions;
+export const { itemAdded, itemRemoved, allItemsRemoved, itemQuantityChanged } = selectedItemsSlice.actions;
 
 export default selectedItemsSlice.reducer;
