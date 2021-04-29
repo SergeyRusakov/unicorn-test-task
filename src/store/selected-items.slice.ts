@@ -21,7 +21,14 @@ const selectedItemsSlice = createSlice({
                 }
             },
             reducer: (state, action: PayloadAction<SelectedItem>) => {
-                state.push(action.payload);
+                const item = state.find(item => item.id === action.payload.id);
+                if (!item) {
+                    state.push(action.payload);
+                } else if (item.quantity + action.payload.quantity <= item.available) {
+                    item.quantity += action.payload.quantity;
+                } else {
+                    item.quantity = item.available;
+                }
             }
         },
         itemRemoved: (state, action: PayloadAction<SelectedItem>) => {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SelectedItem } from '../../types/selected-item.type';
 import './CartItem.css';
 import { NumberInput } from '../number-input/NumberInput';
@@ -34,6 +34,9 @@ export const CartItem = (props: CartItemProps) => {
             setQuantity(+event.target.value);
         }
     }
+    useEffect(() => {
+        setQuantity(item.quantity)
+    }, [item.quantity]);
 
     const handleRemoveButton = () => {
         dispatch(itemRemoved(item));
