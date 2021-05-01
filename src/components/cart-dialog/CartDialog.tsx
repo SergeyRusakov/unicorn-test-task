@@ -8,8 +8,12 @@ import { PaymentDialog } from '../payment-dialog/PaymentDialog';
 import { useSelector } from 'react-redux';
 import { selectAll } from '../../store/selected-items.slice';
 
+interface HeaderCartProps {
+    afterClose: () => void;
+}
+
 // TODO Добавить оверлей
-export const CartDialog = () => {
+export const CartDialog = (props: HeaderCartProps) => {
 
     const [isDialogOpen, setDialogOpen] = useState(false);
 
@@ -23,7 +27,7 @@ export const CartDialog = () => {
         )
     });
 
-    const handleDialogClose = () => {
+    const handlePaymentDialogClose = () => {
         setDialogOpen(false);
     }
 
@@ -35,27 +39,37 @@ export const CartDialog = () => {
         return !(selectedItems?.length);
     }
 
+    const handleOverlayClick = () => {
+        props.afterClose();
+    }
+
     return (
         <div className='cart-dialog'>
 
             <div className="cart-dialog__content">
+
                 <ul className="cart-dialog__items">
                     {cartItems}
                 </ul>
-            </div>
 
-            <div className="cart-dialog__footer">
-                <CartStats/>
-                <SubmitButton disabled={isSubmitButtonDisabled()}
-                              onClick={handleSubmitButton}>
-                    Оплатить
-                </SubmitButton>
+                <div className="cart-dialog__footer">
+                    <CartStats/>
+                    <SubmitButton disabled={isSubmitButtonDisabled()}
+                                  onClick={handleSubmitButton}>
+                        Оплатить
+                    </SubmitButton>
+                </div>
+
             </div>
 
             <AppDialog isOpen={isDialogOpen}
-                       afterClose={handleDialogClose}>
+                       afterClose={handlePaymentDialogClose}>
                 <PaymentDialog selectedItems={selectedItems}/>
             </AppDialog>
+
+            <div className="cart-dialog__overlay"
+                 onClick={handleOverlayClick}>
+            </div>
 
         </div>
     );

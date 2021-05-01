@@ -9,7 +9,11 @@ export const HeaderCart = () => {
     const [isCartDialogOpen, setCardDialogOpen] = useState(false);
 
     const handleTitleClick = () => {
-        setCardDialogOpen(!isCartDialogOpen);
+        setCardDialogOpen(true);
+    }
+
+    const handleCartDialogClose = () => {
+        setCardDialogOpen(false);
     }
 
     return (
@@ -25,7 +29,7 @@ export const HeaderCart = () => {
             </div>
 
             <div className='header-cart__cart-dialog'>
-                {isCartDialogOpen && <CartDialog/>}
+                {isCartDialogOpen && <CartDialog afterClose={handleCartDialogClose}/>}
             </div>
 
         </div>

@@ -1,4 +1,7 @@
-.cart-dialog {
+.cart-dialog__content {
+    position: relative;
+    z-index: 1;
+    overflow-y: auto;
     background: #ffffff;
     height: 400px;
     width: 300px;
@@ -8,10 +11,8 @@
     box-shadow: 0 8px 24px rgba(149,157,165,0.2);
 }
 
-.cart-dialog__content {
-    min-height: 0;
+.cart-dialog__items {
     flex: 1;
-    overflow-y: auto;
 }
 
 .cart-dialog__item {
@@ -24,4 +25,12 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+}
+
+.cart-dialog__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
 }
