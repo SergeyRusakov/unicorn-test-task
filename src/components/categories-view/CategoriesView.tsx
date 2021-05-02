@@ -2,6 +2,7 @@ import './CategoriesView.css';
 import { CategoryCard } from '../category-card/CategoryCard';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
+import { Link } from 'react-router-dom';
 
 export const CategoriesView = () => {
 
@@ -9,8 +10,12 @@ export const CategoriesView = () => {
 
     const categoryCards = categories.map(category => {
         return (
-            <div className='categories-view__card' key={category.id}>
-                <CategoryCard name={category.title}/>
+
+            <div className='categories-view__card'
+                 key={category.id}>
+                <Link to={`/items/${category.id}`}>
+                    <CategoryCard name={category.title}/>
+                </Link>
             </div>
         );
     });

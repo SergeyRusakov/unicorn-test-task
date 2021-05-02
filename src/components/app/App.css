@@ -5,7 +5,7 @@
     flex-direction: column;
 }
 
-.app__categories {
+.app__main {
     min-height: 0;
     flex: 1;
 }

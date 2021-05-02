@@ -6,11 +6,12 @@ import { selectShoppingItemById } from '../../store/shopping-items.slice';
 import { RootState } from '../../store/store';
 import React, { useState } from 'react';
 import { itemAdded } from '../../store/selected-items.slice';
+import { useParams } from 'react-router';
 
 export const ItemOrderView = () => {
 
-    const id = 1;
-    const item = useSelector((state: RootState) => selectShoppingItemById(state, id));
+    const {itemId} = useParams<{itemId}>();
+    const item = useSelector((state: RootState) => selectShoppingItemById(state, +itemId));
     const dispatch = useDispatch();
     const [quantity, setQuantity] = useState(1);
 
