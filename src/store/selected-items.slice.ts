@@ -46,7 +46,7 @@ const selectedItemsSlice = createSlice({
             }
         },
         allItemsRemoved: (state) => {
-            state = [];
+            state.splice(0, state.length);
         },
     },
 });

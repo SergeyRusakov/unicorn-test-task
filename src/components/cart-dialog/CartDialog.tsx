@@ -5,8 +5,8 @@ import { SubmitButton } from '../submit-button/SubmitButton';
 import './CartDialog.css';
 import { AppDialog } from '../app-dialog/AppDialog';
 import { PaymentDialog } from '../payment-dialog/PaymentDialog';
-import { useSelector } from 'react-redux';
-import { selectAll } from '../../store/selected-items.slice';
+import { useDispatch, useSelector } from 'react-redux';
+import { allItemsRemoved, selectAll } from '../../store/selected-items.slice';
 
 interface HeaderCartProps {
     afterClose: () => void;
@@ -16,8 +16,8 @@ interface HeaderCartProps {
 export const CartDialog = (props: HeaderCartProps) => {
 
     const [isDialogOpen, setDialogOpen] = useState(false);
-
     const selectedItems = useSelector(selectAll);
+    const dispatch = useDispatch();
 
     const cartItems = selectedItems.map(item => {
         return (
@@ -43,6 +43,10 @@ export const CartDialog = (props: HeaderCartProps) => {
         props.afterClose();
     }
 
+    const afterPaymentSuccess = () =>{
+        dispatch(allItemsRemoved());
+    }
+
     return (
         <div className='cart-dialog'>
 
@@ -64,7 +68,8 @@ export const CartDialog = (props: HeaderCartProps) => {
 
             <AppDialog isOpen={isDialogOpen}
                        afterClose={handlePaymentDialogClose}>
-                <PaymentDialog selectedItems={selectedItems}/>
+                <PaymentDialog afterPaymentSuccess={afterPaymentSuccess}
+                               selectedItems={selectedItems}/>
             </AppDialog>
 
             <div className="cart-dialog__overlay"

@@ -11,7 +11,8 @@ export const PaymentSuccessItemsList = (props: PaymentSuccessItemsListProps) => 
     const {items} = props;
 
     const renderItems = items.map(item => (
-        <li className='payment-success-items-list__item'>
+        <li className='payment-success-items-list__item'
+            key={item.id}>
             <PaymentSuccessItem item={item}/>
         </li>
     ));

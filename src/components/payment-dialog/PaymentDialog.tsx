@@ -6,6 +6,7 @@ import { SelectedItem } from '../../types/selected-item.type';
 
 interface PaymentDialogProps {
     selectedItems: SelectedItem[];
+    afterPaymentSuccess: () => void;
 }
 
 interface PaymentDialogState {
@@ -57,6 +58,7 @@ export class PaymentDialog extends React.Component<PaymentDialogProps, PaymentDi
     }
 
     private afterLoading(): void {
+        this.props.afterPaymentSuccess();
         this.clearLoadingInterval();
     }
 
