@@ -29,6 +29,14 @@
     border: 1px solid black;
     margin-right: 15px;
     flex: 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.item-order-view__image-image {
+    height: 250px;
+    width: 250px;
 }
 
 .item-order-view__controls {

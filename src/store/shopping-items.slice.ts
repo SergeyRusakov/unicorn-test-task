@@ -12,6 +12,10 @@ const shoppingItemsSlice = createSlice({
     reducers: {},
 });
 
+export function selectAllShoppingItems(state: RootState): ShoppingItem[] {
+    return state.shoppingItems;
+}
+
 export function selectByCategoryId(categoryId: number): Selector<RootState, ShoppingItem[]> {
     return (state: RootState) => (
         state.shoppingItems.filter(item => item.categoryId === categoryId)
