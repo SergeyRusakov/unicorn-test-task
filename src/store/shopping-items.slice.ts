@@ -18,4 +18,8 @@ export function selectByCategoryId(categoryId: number): Selector<RootState, Shop
     );
 }
 
+export function selectShoppingItemById(state: RootState, id: number): ShoppingItem | undefined {
+    return state.shoppingItems.find(item => item.id === id);
+}
+
 export default shoppingItemsSlice.reducer;

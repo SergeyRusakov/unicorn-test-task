@@ -5,7 +5,6 @@ import { NumberInput } from '../number-input/NumberInput';
 import { useDispatch } from 'react-redux';
 import { itemQuantityChanged, itemRemoved } from '../../store/selected-items.slice';
 
-// TODO Переделать на функциональный компонент
 export interface CartItemProps {
     item: SelectedItem;
 }
@@ -34,6 +33,7 @@ export const CartItem = (props: CartItemProps) => {
             setQuantity(+event.target.value);
         }
     }
+
     useEffect(() => {
         setQuantity(item.quantity)
     }, [item.quantity]);
