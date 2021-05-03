@@ -15,7 +15,6 @@ export const Header = () => {
                 </Link>
                 <Breadcrumbs/>
             </div>
-
             <HeaderCart/>
         </div>
     )

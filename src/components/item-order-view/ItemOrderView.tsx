@@ -42,8 +42,7 @@ export const ItemOrderView = () => {
             <div className='item-order-view__content'>
                 <div className="item-order-view__content-top">
                     <div className="item-order-view__image">
-                        <img className="item-order-view__image-image" src={'/unicorn.webp'}>
-                        </img>
+                        <img className="item-order-view__image-image" src={'/unicorn.webp'} alt='unicorn'/>
                     </div>
                     <div className="item-order-view__controls">
                         <div className="item-order-view__controls-input">

@@ -1,7 +1,7 @@
 .header-cart {
     border: 1px solid black;
-    width: 190px;
-    height: 60px;
+    width: 300px;
+    height: 90px;
     position: relative;
     user-select: none;
 }
@@ -12,7 +12,6 @@
 
 .header-cart__cart-dialog {
     position: absolute;
-    top: 0;
     right: 0;
     z-index: 2;
 }
