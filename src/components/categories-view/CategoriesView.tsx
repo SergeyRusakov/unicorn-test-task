@@ -5,6 +5,7 @@ import { RootState } from '../../store/store';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import { fetchCategories } from '../../store/categories.slice';
+import { CirclesLoadingIndicator } from '../circles-loading-indicator/CirclesLoadingIndicator';
 
 export const CategoriesView = () => {
 
@@ -13,14 +14,11 @@ export const CategoriesView = () => {
     const status = useSelector((state: RootState) => state.categories.status);
 
     useEffect(() => {
-        if (status === 'idle') {
-            dispatch(fetchCategories());
-        }
-    }, [status, dispatch]);
+        dispatch(fetchCategories());
+    }, []);
 
     const categoryCards = categories.map(category => {
         return (
-
             <div className='categories-view__card'
                  key={category.id}>
                 <Link to={`/items/${category.id}`}>
@@ -30,9 +28,15 @@ export const CategoriesView = () => {
         );
     });
 
+    const loadingIndicator = (
+        <div className="categories-view__loading-indicator">
+            {(status !== 'loading' || <CirclesLoadingIndicator/>)}
+        </div>
+    );
+
     return (
         <div className='categories-view'>
-            {categoryCards}
+            {status === 'loading' ? loadingIndicator : categoryCards}
         </div>
     );
 };

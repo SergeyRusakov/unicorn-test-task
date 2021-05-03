@@ -3,7 +3,6 @@ import './HeaderCart.css';
 import { CartStats } from '../cart-stats/CartStats';
 import { CartDialog } from '../cart-dialog/CartDialog';
 
-// TODO Переделать на функциональный компонент с хуками
 export const HeaderCart = () => {
 
     const [isCartDialogOpen, setCardDialogOpen] = useState(false);
