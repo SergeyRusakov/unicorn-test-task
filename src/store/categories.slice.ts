@@ -14,7 +14,7 @@ export const fetchCategories = createAsyncThunk('categories/fetchCategories', as
     return await new Promise((resolve) => {
         setTimeout(() => {
             resolve(JSON.parse(categoriesJSON))
-        }, 1500);
+        }, 500);
     }) as Category[];
 });
 

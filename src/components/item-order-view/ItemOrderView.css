@@ -55,3 +55,10 @@
 .item-order-view__controls-submit {
     height: 50px;
 }
+
+.item-order-view__loading-indicator {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%);
+}

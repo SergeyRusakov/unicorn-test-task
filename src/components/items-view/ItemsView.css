@@ -12,3 +12,11 @@
     height: 400px;
     margin: 25px 0;
 }
+
+.items-view__loading-indicator {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%);
+}
+
